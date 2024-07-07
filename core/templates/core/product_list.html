@@ -1,0 +1,32 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block title %}Shop | Bakery Delights{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Shop</h1>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">${{ product.price }}</p>
+                    <form action="{% url 'add_to_cart' product.id %}" method="post" class="d-inline-block">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </form>
+                    <form action="{% url 'add_to_wishlist' product.id %}" method="post" class="d-inline-block">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-secondary">
+                            <img src="{% static 'assets/img/wishlist2.png' %}" alt="Wishlist" width="20" height="20">
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

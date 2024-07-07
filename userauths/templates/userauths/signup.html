@@ -1,0 +1,49 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block title %}Sign Up | Bakery Delights{% endblock %}
+
+{% block content %}
+<div class="fruity-bg text-primary-emphasis">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header text-center bg-primary text-white">
+                        <h3>Sign Up</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.non_field_errors }}
+                            <div class="form-group">
+                                <label for="{{ form.username.id_for_label }}">Username</label>
+                                {{ form.username }}
+                                {{ form.username.errors }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.email.id_for_label }}">Email</label>
+                                {{ form.email }}
+                                {{ form.email.errors }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.password1.id_for_label }}">Password</label>
+                                {{ form.password1 }}
+                                {{ form.password1.errors }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                                {{ form.password2 }}
+                                {{ form.password2.errors }}
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block my-2">Sign Up</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <a href="{% url 'login' %}">Already have an account? Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

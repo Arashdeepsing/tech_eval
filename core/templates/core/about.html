@@ -1,0 +1,15 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block title %}About Us | Bakery Delights{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1>About Us</h1>
+    <img src="{% static 'assets/img/baker.jpg' %}" width="350" height="500" class="about-img mb-4" alt="Bakery">
+    <p>Welcome to Bakery Delights, where we believe in the power of delicious, homemade baked goods. Our bakery is
+        dedicated to providing you with the finest quality bread, cakes, and cookies. We use only the freshest
+        ingredients to ensure that every bite is a delightful experience.</p>
+    <p>Founded in 2020, Bakery Delights has quickly become a favorite among locals and visitors alike. Our passion for
+        baking and commitment to excellence shines through in every product we offer. Whether you're stopping by for a
+        quick treat or ordering for a special occasion, we're here to make your day a little sweeter.</p>
+</div>
+{% endblock %}

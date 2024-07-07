@@ -1,0 +1,22 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block title %}Orders | Bakery Delights{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Your Orders</h2>
+    {% if orders %}
+    <div class="list-group">
+        {% for order in orders %}
+        <a href="{% url 'order_detail' order.id %}" class="list-group-item list-group-item-action">
+            <h5 class="mb-1">Order #{{ order.id }}</h5>
+            <p class="mb-1">Placed on: {{ order.created_at }}</p>
+            <small>Status: {{ order.status }}</small>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-center">You have no orders.</p>
+    {% endif %}
+</div>
+{% endblock %}

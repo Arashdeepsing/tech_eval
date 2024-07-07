@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/img/logo.png' %}">
+    <title>{% block title %}Bakery Delights{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/ubuntu/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <style>
+        body {
+            background-color: #fff9e6;
+        }
+
+        .navbar {
+            margin-bottom: 50px;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-title,
+        .card-text {
+            text-align: center;
+        }
+
+        footer {
+            background-color: #ffcc99;
+            padding: 20px 0;
+        }
+
+        ol {
+            list-style-type: none;
+        }
+
+        /* Fruity Background */
+        .fruity-bg {
+            background-image: url('{% static 'assets/img/berries.jpg' %}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 50px 0;
+            color: white;
+        }
+
+        /* Form Container */
+        .fruity-bg .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: #ff5722;
+            border-color: #ff5722;
+        }
+
+        .btn-primary:hover {
+            background-color: #e64a19;
+            border-color: #e64a19;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <!-- <div class="container"> -->
+        <a class="navbar-brand mx-3" href="#">
+            <img src="{% static 'assets/img/logo.png'%}" alt="" width="50" height="44">
+            Bakery Delights
+        </a>
+        <!-- </div> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item {% if request.path == 'home' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item {% if request.path == '/about/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item {% if request.path == '/shop/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'product_list' %}">Shop</a>
+                </li>
+                <li class="nav-item {% if request.path == '/contact/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                </li>
+                <li class="nav-item {% if request.path == '/orders/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'order_list' %}">Orders</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li>
+                    <a class="navbar-brand mx-3" href="{% url 'cart_detail' %}">
+                        <img src="{% static 'assets/img/cart.png' %}" alt="Cart" width="50" height="44">
+                    </a>
+                </li>
+                <li>
+                    <a class="navbar-brand mx-3" href="{% url 'wishlist_detail' %}">
+                        <img src="{% static 'assets/img/wishlist.png' %}" alt="Wishlist" width="50" height="44">
+                    </a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item mx-2">
+                    <a class="nav-link fw-bold text-dark" href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item {% if request.path == '/login' %}active{% endif %} mx-2">
+                    <a class="nav-link fw-bold text-dark" href="{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer class="text-center mt-4">
+        <p>&copy; 2024 Bakery Delights</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
