@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 
 
     #my-apps
-    'rest_framework',
+
     'userauths',
 
         'core',
