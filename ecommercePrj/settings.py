@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-x&hf=1evoa#ay54w+r(%!t)^b6x^%-r@t=q11&(o05o(xsrets
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://tech-eval-three.vercel.app/']
+ALLOWED_HOSTS = ['https://tech-eval-three.vercel.app']
 
 
 # Application definition
