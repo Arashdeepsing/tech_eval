@@ -7,7 +7,7 @@ from .forms import SignupForm, LoginForm
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
-    path('contact/', views.contacts, name='contact'),
+    path('contacts/', views.contacts, name='contact'),
     path('shop/', views.product_list, name='product_list'),
     path('add-to-cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
     path('cart/', views.cart_detail, name='cart_detail'),
