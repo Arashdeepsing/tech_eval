@@ -142,5 +142,5 @@ def logout_view(request):
 def about(request):
     return render(request, 'core/about.html')
 
-def contact(request):
+def contacts(request):
     return render(request, 'core/contacts.html')
