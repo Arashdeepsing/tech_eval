@@ -104,6 +104,29 @@ DATABASES = {
     'default': dj_database_url.parse(config('DATABASE_URL'), conn_max_age=600, ssl_require=True)
 }
 
+# settings.py
+
+# Tell Django to use S3 for storing media files
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# AWS settings for S3
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')  # Replace with your AWS secret key
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')  # Replace with your S3 bucket name
+AWS_S3_REGION_NAME = 'us-east-2'  # Adjust based on your AWS region
+AWS_S3_SIGNATURE_VERSION = 's3v4'  # Optional: Use if required by your region
+AWS_S3_FILE_OVERWRITE = False  # Optional: Set to False to prevent overwriting files
+AWS_DEFAULT_ACL = None  # Optional: Set to None to disable default public ACLs
+
+# Media URL
+# Set up the default S3 URL for your bucket
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+
+# Set MEDIA_URL to point to your bucket
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -142,9 +165,9 @@ STATIC_URL = "static/"
 STATIC_ROOT= os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
 
-MEDIA_URL='/media/'
+# MEDIA_URL='/media/'
 
-MEDIA_ROOT=os.path.join(BASE_DIR,"media")
+# MEDIA_ROOT=os.path.join(BASE_DIR,"media")
 
 LANGUAGES = [
     ('en', 'English'),
