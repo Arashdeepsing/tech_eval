@@ -116,7 +116,10 @@ AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')  # Replace with your
 AWS_S3_REGION_NAME = 'us-east-2'  # Adjust based on your AWS region
 AWS_S3_SIGNATURE_VERSION = 's3v4'  # Optional: Use if required by your region
 AWS_S3_FILE_OVERWRITE = False  # Optional: Set to False to prevent overwriting files
-AWS_DEFAULT_ACL ='public-read'  # Optional: Set to None to disable default public ACLs
+AWS_DEFAULT_ACL = None  # Optional: Set to None to disable default public ACLs
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
 
 # Media URL
 # Set up the default S3 URL for your bucket
