@@ -33,5 +33,5 @@ Admin account can:</br>
 ● Data is stored in the PostgreSQL database</br>
 ● Proceed to checkout for purchasing products</br>
 ● Orders are placed successfully after checkout</br>
-
-<h3>[Dependencies](requirements.txt)</h3>
+</br>
+[Dependencies](requirements.txt)
